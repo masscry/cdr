@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.3)
+
 project(cdr-project)
+
+include(CTest)
 
 list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
 

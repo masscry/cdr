@@ -8,6 +8,7 @@ extern "C" {
 
 #include <setjmp.h>
 #include <stdarg.h>
+#include <stdlib.h>
 
 #define CUTEST_VERSION  "CuTest 1.5"
 
