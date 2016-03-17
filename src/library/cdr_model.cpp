@@ -1,6 +1,5 @@
 #include <cdr.h>
 #include <algorithm>
-#include <vector>
 #include "cdr_handle.h"
 
 
@@ -10,11 +9,6 @@ CDR_API int32_t cdr_new_model(cdr_handle *handle, const void *data, size_t datas
     }
     return CDR_BAD_PTR;
 }
-
-CDR_API void cdr_print_model(cdr_handle *handle, FILE *output) {
-    handle->PrintModel(output);
-}
-
 
 class compare_freq_entry {
 public:
@@ -68,11 +62,5 @@ int32_t cdr_handle::BuildModel(const void *buffer, size_t bufferlen) {
     } catch (std::exception &err) {
         cdr_print_error("Unknown: %s", err.what());
         return CDR_UNKNOWN;
-    }
-}
-
-void cdr_handle::PrintModel(FILE *outp) {
-    for (auto i = this->table.begin(), e = this->table.end(); i != e; ++i) {
-        fprintf(outp, "0x%X: %d\n", i->byte, i->freq);
     }
 }

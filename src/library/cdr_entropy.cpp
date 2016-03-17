@@ -1,8 +1,11 @@
 #include <cdr.h>
 #include "cdr_handle.h"
 #include <cmath>
+#include <assert.h>
 
 CDR_API double cdr_entropy(const void *data, size_t datasize) {
+    assert(data);
+
     uint32_t freq[CDR_BYTE_TABLE_SIZE] = {0};
     uint64_t total = 0;
 

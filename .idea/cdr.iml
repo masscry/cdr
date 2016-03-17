@@ -2,21 +2,24 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_entropy.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_prepare_encoder.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_error.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_prepare_decoder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_handle.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_decode.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_entropy.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_model.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/test/test_init.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/test/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_encode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_prepare_decoder.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/MemFile.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_encode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_file.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_save.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_set_tree.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_new_delete.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/MemFile.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_handle.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_load.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_get_result.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_get_tree.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/CMakeLists.txt" isTestSource="false" />

@@ -1,6 +1,5 @@
 #include <cdr.h>
 #include <cutest.h>
-#include <stdio.h>
 #include <string.h>
 #include <iostream>
 #include "../MemFile.h"
@@ -51,7 +50,7 @@ void TestWarAndPeaceEncode(CuTest *tc) {
     CuAssert(tc, "Entropy must rise", cdr > txt);
 
     CuAssertIntEquals(tc, CDR_OK, cdr_decode(h, result, size, mf.Length()));
-    cdr_release_result(result);
+    cdr_release(result);
 
     result = cdr_result(h, &size);
 
@@ -65,7 +64,7 @@ void TestWarAndPeaceEncode(CuTest *tc) {
 
     CuAssertIntEquals(tc, 0, memcmp(mf.Pointer(), result, mf.Length()));
 
-    cdr_release_result(result);
+    cdr_release(result);
 
     cdr_delete(h);
 }
@@ -104,7 +103,7 @@ void TestSaveLoadModel(CuTest *tc) {
 
     CuAssertIntEquals(tc, CDR_OK, cdr_set_tree(h, tree, treesize));
 
-    cdr_release_result(tree);
+    cdr_release(tree);
 
     CuAssertIntEquals(tc, CDR_OK, cdr_decode(h, result, size, mf.Length()));
 
@@ -120,11 +119,49 @@ void TestSaveLoadModel(CuTest *tc) {
 
     CuAssertIntEquals(tc, 0, memcmp(mf.Pointer(), result, mf.Length()));
 
-    cdr_release_result(result);
+    cdr_release(result);
 
 
     cdr_delete(h);
 }
+
+void TestSaveLoadFile(CuTest *tc) {
+
+    memfile mf;
+    CuAssert(tc, "Must open file", mf.Open("book1.txt", OM_READ));
+
+    cdr_handle *h = cdr_new();
+    CuAssertPtrNotNull(tc, h);
+
+    CuAssertIntEquals(tc, CDR_OK, cdr_new_model(h, mf.Pointer(), mf.Length()));
+    CuAssertIntEquals(tc, CDR_OK, cdr_prepare_decoder(h));
+    CuAssertIntEquals(tc, CDR_OK, cdr_prepare_encoder(h));
+
+    CuAssertIntEquals(tc, CDR_OK, cdr_encode(h, mf.Pointer(), mf.Length()));
+
+    FILE *outp = fopen("book1.c0d", "w");
+    CuAssertIntEquals(tc, CDR_OK, cdr_save(h, outp));
+    cdr_delete(h);
+    h = 0;
+    fclose(outp);
+
+
+    FILE *inp = fopen("book1.c0d", "r");
+    h = cdr_new();
+    CuAssertIntEquals(tc, CDR_OK, cdr_load(h, inp));
+
+    size_t ressize = 0;
+    void *result = cdr_result(h, &ressize);
+
+    CuAssertIntEquals(tc, mf.Length(), ressize);
+    CuAssertIntEquals(tc, 0, memcmp(mf.Pointer(), result, mf.Length()));
+
+    cdr_release(result);
+
+    cdr_delete(h);
+
+}
+
 
 CuSuite *RegisterTest() {
     CuSuite *suite = CuSuiteNew();
@@ -132,6 +169,7 @@ CuSuite *RegisterTest() {
     SUITE_ADD_TEST(suite, TestErrorText);
     SUITE_ADD_TEST(suite, TestWarAndPeaceEncode);
     SUITE_ADD_TEST(suite, TestSaveLoadModel);
+    SUITE_ADD_TEST(suite, TestSaveLoadFile);
     return suite;
 }
 

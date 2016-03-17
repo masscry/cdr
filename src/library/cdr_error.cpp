@@ -1,5 +1,4 @@
 #include "cdr_handle.h"
-#include <cstdio>
 #include <cstdarg>
 
 static const char *errstr[CDR_LAST_CODE + 1] = {
@@ -13,6 +12,9 @@ static const char *errstr[CDR_LAST_CODE + 1] = {
         "No decoder tree",
         "Bad decoder top",
         "Prefix tree too long (>32 bits)",
+        "Bad file magic",
+        "Unknown flags",
+        "Bad write",
         0
 };
 

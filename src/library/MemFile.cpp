@@ -12,7 +12,7 @@
 
 bool memfile::Open(const char *filename, int om) {
 
-    int oflag = -1;
+    int oflag = 0;
     int protflag = 0;
     int mode = 0;
     switch (om) {

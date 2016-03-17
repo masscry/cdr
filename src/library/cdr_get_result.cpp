@@ -9,7 +9,7 @@ CDR_API void *cdr_result(cdr_handle *handle, size_t *size) {
 }
 
 
-CDR_API void cdr_release_result(void *ptr) {
+CDR_API void cdr_release(void *ptr) {
     free(ptr);
 }
 

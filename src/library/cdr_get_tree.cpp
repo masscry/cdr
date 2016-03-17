@@ -19,6 +19,8 @@ void RecursiveGetTree(obitstream<cdr_deque> &cdr, freqList::iterator head) {
             cdr.Push(0x1, 0x1);
             cdr.Push(head->byte, 8);
             break;
+        default:
+            throw std::runtime_error("Unknown node type");
     }
 }
 

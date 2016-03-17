@@ -24,6 +24,7 @@ int32_t cdr_handle::Encode(const void *buffer, size_t bufferlen) {
         coder.Flush();
 
         this->coded.swap(result);
+        this->encodedlen = bufferlen;
         return CDR_OK;
 
     } catch (std::bad_alloc &err) {

@@ -19,5 +19,4 @@ CDR_API cdr_handle *cdr_new() {
 
 CDR_API void cdr_delete(cdr_handle *oldhandle) {
     delete oldhandle;
-    oldhandle = 0;
 }

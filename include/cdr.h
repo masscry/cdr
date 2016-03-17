@@ -40,6 +40,9 @@ typedef enum cdr_status {
     CDR_NO_DECODER_TREE, /// No prepared decoder tree
     CDR_INVALID_TREE_TOP, /// Bad tree top
     CDR_PREFIX_TREE_TOO_LONG, /// Bad prefix tree length
+    CDR_BAD_MAGIC, /// Bad file magic
+    CDR_UNKNOWN_FLAGS, /// Unknown file flag
+    CDR_BAD_FILE_WRITE, /// Failed to write to file
     CDR_LAST_CODE
 } cdr_status;
 
@@ -135,7 +138,7 @@ CDR_API int32_t cdr_decode(cdr_handle *handle, const void *data, size_t datasize
  * @param handle
  * @param ptr
  */
-CDR_API void cdr_release_result(void *ptr);
+CDR_API void cdr_release(void *ptr);
 
 
 
@@ -163,9 +166,19 @@ CDR_API int32_t cdr_set_tree(cdr_handle *handle, const void *tree, size_t treesi
  */
 CDR_API const char *cdr_strerror(int32_t error);
 
-CDR_API void cdr_print_model(cdr_handle *handle, FILE *output);
-CDR_API void cdr_print_encoder(cdr_handle *handle, FILE *output);
+/**
+ * Save result to file
+ * @param handle
+ * @param outp file stream
+ */
+CDR_API int32_t cdr_save(cdr_handle *handle, FILE *outp);
 
+/**
+ * Load result from file
+ * @param handle
+ * @param inp file stream
+ */
+CDR_API int32_t cdr_load(cdr_handle *handle, FILE *inp);
 
 #ifdef __cplusplus
 }

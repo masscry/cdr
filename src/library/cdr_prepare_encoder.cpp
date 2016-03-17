@@ -61,18 +61,3 @@ int32_t cdr_handle::PrepareEncoder() {
         return CDR_UNKNOWN;
     }
 }
-
-
-CDR_API void cdr_print_encoder(cdr_handle *handle, FILE *output) {
-    handle->PrintEncoder(output);
-}
-
-void cdr_handle::PrintEncoder(FILE *outp) {
-
-    for (auto i = this->encoder.begin(), e = this->encoder.end(); i != e; ++i) {
-        std::cout << std::setw(5) << i->first
-        << std::setw(3) << i->second.len
-        << std::setw(CDR_MAX_BIT_LEN + 1) << std::bitset<CDR_MAX_BIT_LEN>(i->second.value) << std::endl;
-    }
-
-}

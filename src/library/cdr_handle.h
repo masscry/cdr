@@ -51,7 +51,7 @@ private:
     freqList::iterator top;
     huffMap encoder;
     cdr_deque coded;
-
+    size_t encodedlen;
 
     cdr_handle(const cdr_handle &copy);
 
@@ -70,13 +70,15 @@ public:
 
     int32_t SetTree(const void *tree, size_t treesize);
 
-    void PrintModel(FILE *outp);
-
-    void PrintEncoder(FILE *outp);
-
     void *Result(size_t *size);
 
-    cdr_handle() : table(), decoder(), top(decoder.end()), encoder(), coded() {
+    size_t SourceLength() const;
+
+    int32_t Load(FILE *inp);
+
+    int32_t Save(FILE *outp);
+
+    cdr_handle() : table(), decoder(), top(decoder.end()), encoder(), coded(), encodedlen(0) {
         ;
     }
 
@@ -162,7 +164,7 @@ public:
             uint32_t shift = std::min(len, bytelen);
             result = result << shift;
             result = result | (mem >> (len - shift));
-            
+
             mem = mem & ((1 << (len - shift)) - 1);
             bytelen -= shift;
             this->len -= shift;
