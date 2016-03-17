@@ -23,8 +23,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_get_result.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/library/cdr_get_tree.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/tool/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/tool/test/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/cdr.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/contrib/cutest/cutest.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/contrib/cutest/cutest.h" isTestSource="false" />

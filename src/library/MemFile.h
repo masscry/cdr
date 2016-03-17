@@ -24,6 +24,8 @@ public:
 
     bool Open(const char *filename, int om);
 
+    bool Open(int id, int om);
+
     bool Close();
 
     void *Pointer() const;

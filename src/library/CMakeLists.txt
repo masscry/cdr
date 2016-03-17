@@ -19,8 +19,7 @@ set(CDR_HEADER
         ../../include/cdr.h
         cdr_handle.h
         MemFile.h
-        cdr_file.h
-        )
+        cdr_file.h)
 
 
 add_library(${PROJECT_NAME} SHARED ${CDR_SOURCE} ${CDR_HEADER})
